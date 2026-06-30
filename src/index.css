@@ -1,0 +1,311 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #030303;
+  color: #f4f4f4;
+  font-family: "SF Mono", "Menlo", "Monaco", monospace;
+  overflow: hidden;
+}
+
+.os {
+  width: 100vw;
+  height: 100vh;
+  padding: 18px;
+  background:
+    radial-gradient(circle at center, rgba(255, 115, 0, 0.18), transparent 38%),
+    linear-gradient(135deg, #020202, #061018 55%, #020202);
+}
+
+.topbar {
+  height: 52px;
+  display: grid;
+  grid-template-columns: 260px 1fr 230px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 115, 0, 0.35);
+}
+
+.brand {
+  color: #ff7a00;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.brand span {
+  color: #888;
+  font-size: 12px;
+  margin-left: 12px;
+}
+
+.topbar nav {
+  display: flex;
+  gap: 42px;
+  justify-content: center;
+  color: #777;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.topbar nav b {
+  color: #ff7a00;
+  border-bottom: 2px solid #ff7a00;
+  padding-bottom: 17px;
+}
+
+.online {
+  color: #49ff59;
+  text-align: right;
+  letter-spacing: 2px;
+}
+
+.grid {
+  height: calc(100vh - 70px);
+  display: grid;
+  grid-template-columns: 315px 1fr 470px;
+  gap: 18px;
+  padding-top: 18px;
+}
+
+.left,
+.right,
+.center {
+  min-height: 0;
+}
+
+.panel,
+.info {
+  border: 1px solid rgba(255, 115, 0, 0.38);
+  background: rgba(0, 10, 14, 0.62);
+  box-shadow:
+    inset 0 0 22px rgba(255, 115, 0, 0.04),
+    0 0 22px rgba(255, 115, 0, 0.05);
+  padding: 18px;
+  margin-bottom: 18px;
+  clip-path: polygon(0 10px, 10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px));
+}
+
+.panel h3 {
+  margin: 0 0 18px;
+  color: #ff7a00;
+  font-size: 16px;
+  letter-spacing: 3px;
+}
+
+.row {
+  border-bottom: 1px solid rgba(255, 115, 0, 0.14);
+  padding: 12px 0;
+  font-size: 15px;
+}
+
+.row span {
+  display: block;
+  color: #ddd;
+}
+
+.left .panel:nth-child(1) .row:nth-child(1)::after,
+.left .panel:nth-child(1) .row:nth-child(2)::after {
+  content: "";
+  display: block;
+  height: 2px;
+  margin-top: 8px;
+  background: linear-gradient(90deg, #ff7a00, transparent);
+}
+
+.center {
+  position: relative;
+  text-align: center;
+}
+
+.center h1 {
+  color: #ff7a00;
+  letter-spacing: 12px;
+  font-size: 24px;
+  margin: 20px 0 10px;
+}
+
+.core-wrap {
+  position: relative;
+  width: 470px;
+  height: 470px;
+  margin: 0 auto;
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 115, 0, 0.65);
+  animation: rotate 12s linear infinite;
+}
+
+.r1 {
+  inset: 0;
+  box-shadow: 0 0 35px rgba(255, 115, 0, 0.22);
+}
+
+.r2 {
+  inset: 42px;
+  animation-duration: 9s;
+}
+
+.r3 {
+  inset: 90px;
+  animation-duration: 6s;
+}
+
+.r4 {
+  inset: 140px;
+  animation-duration: 4s;
+}
+
+.core {
+  position: absolute;
+  inset: 205px;
+  background: #ff8a00;
+  border-radius: 50%;
+  box-shadow:
+    0 0 30px #ff8a00,
+    0 0 90px rgba(255, 115, 0, 0.9),
+    0 0 160px rgba(255, 115, 0, 0.45);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.center h2 {
+  color: #ff7a00;
+  font-size: 22px;
+  letter-spacing: 7px;
+  margin: 10px 0 8px;
+}
+
+.center > p {
+  color: white;
+  letter-spacing: 4px;
+  margin: 0 0 18px;
+}
+
+.perf {
+  display: grid;
+  grid-template-columns: 45px 1fr 55px;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.graph {
+  height: 26px;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 115, 0, 0.25), transparent),
+    repeating-linear-gradient(90deg, transparent 0 12px, rgba(255, 115, 0, 0.35) 13px 14px);
+  border-bottom: 1px solid #ff7a00;
+  opacity: 0.85;
+}
+
+.perf b {
+  color: #ff7a00;
+}
+
+.voice {
+  margin-top: 18px;
+  padding: 22px;
+  border: 1px solid rgba(255, 115, 0, 0.35);
+  color: #ff7a00;
+  letter-spacing: 10px;
+  font-size: 22px;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 115, 0, 0.08), transparent);
+}
+
+.right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-content: start;
+}
+
+.right .panel,
+.right .info {
+  margin-bottom: 0;
+}
+
+.right .panel:nth-of-type(1),
+.right .panel:nth-of-type(2),
+.right .panel:nth-of-type(3) {
+  grid-column: span 2;
+}
+
+.clock {
+  color: #ff7a00;
+  font-size: 34px;
+  letter-spacing: 5px;
+}
+
+.info p {
+  color: #aaa;
+  letter-spacing: 2px;
+}
+
+.weather b {
+  color: #ff7a00;
+  letter-spacing: 3px;
+}
+
+.weather div {
+  font-size: 40px;
+  margin-top: 18px;
+}
+
+.map {
+  height: 190px;
+  display: grid;
+  place-items: center;
+  color: #ff7a00;
+  background:
+    radial-gradient(circle at center, rgba(255, 115, 0, 0.22), transparent 45%),
+    repeating-linear-gradient(0deg, transparent 0 8px, rgba(255, 115, 0, 0.05) 9px 10px);
+  border: 1px solid rgba(255, 115, 0, 0.18);
+}
+
+.log {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  color: #aaa;
+  border-bottom: 1px solid rgba(255, 115, 0, 0.12);
+}
+
+.log::after {
+  content: "ONLINE";
+  color: #49ff59;
+}
+
+.quick {
+  display: flex;
+  gap: 14px;
+}
+
+.quick button {
+  flex: 1;
+  height: 70px;
+  background: rgba(255, 115, 0, 0.04);
+  color: #ff7a00;
+  border: 1px solid rgba(255, 115, 0, 0.3);
+  font-size: 26px;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(0.86);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+}

@@ -1,18 +1,10 @@
-import OpenAI from "openai";
-
-import { buildSystemPrompt } from "../ai/promptBuilder";
+import { buildSystemPrompt } from "../ai/promptBuilder.js";
 import {
   addMessage,
   getConversationHistory,
-} from "../ai/conversation";
-
-const client = new OpenAI({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true,
-});
+} from "../ai/conversation.js";
 
 export async function askJarvis(message) {
-
   addMessage("user", message);
 
   const messages = [
@@ -20,19 +12,14 @@ export async function askJarvis(message) {
       role: "system",
       content: buildSystemPrompt(),
     },
-
     ...getConversationHistory(),
   ];
 
-  const response = await client.chat.completions.create({
-    model: "gpt-4.1-mini",
+  if (!window.jarvisAI) {
+    throw new Error("JARVIS AI API nicht verfügbar.");
+  }
 
-    messages,
-
-    temperature: 0.7,
-  });
-
-  const answer = response.choices[0].message.content;
+  const answer = await window.jarvisAI.ask(messages);
 
   addMessage("assistant", answer);
 
